@@ -3,6 +3,7 @@
 
 typedef struct nodeTag {
     Str20 key;
+    bool visited;
     struct nodeTag *leftNode;
     struct nodeTag *rightNode;
 } Node;

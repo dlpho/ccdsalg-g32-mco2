@@ -5,7 +5,10 @@ Node *createNode(Str20 key) {
 
     // copy key or vertex ID
     strcpy(node->key, key);
-
+	
+	// set visited as false by default
+	node->visited = false;
+	
     // set let and right nodes to null
     node->leftNode = NULL;
     node->rightNode = NULL;
