@@ -242,7 +242,7 @@ void printEdges(Graph *graph)
 }
 
 /*
-    returns true if keys are equal (case insensitive, false otherwise.
+    returns true if keys are equal (case insensitive), false otherwise.
 */
 bool sameKeys(const Str20 key1, const Str20 key2)
 {
