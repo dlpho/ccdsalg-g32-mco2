@@ -3,8 +3,6 @@
 #include "node.h"
 #include "def.h"
 
-#define NODE_MALLOC_ERROR 3
-
 Node *createNode(Str20 key)
 {
     Node *node = (Node *)malloc(sizeof(Node));
@@ -12,7 +10,7 @@ Node *createNode(Str20 key)
     // if allocation of memory fails
     if (node == NULL)
     {
-        exit(NODE_MALLOC_ERROR);
+        exit(MALLOC_ERROR);
     }
 
     // copy given key into vertex

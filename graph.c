@@ -1,4 +1,12 @@
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include "graph.h"
+#include "node.h"
+#include "def.h"
+
+#define INSUFFICIENT_DATA_ERROR 4
 
 /*
     initializes and returns a graph
@@ -18,7 +26,7 @@ Graph *createGraph(int num)
     // if errors exist during memory allocation
     if (graph == NULL || graph->vertices == NULL || graph->edges == NULL)
     {
-        exit(GRAPH_MALLOC_ERROR);
+        exit(MALLOC_ERROR);
     }
 
     // init vertices as empty or all null
@@ -65,7 +73,7 @@ Graph *createGraphFromFile(FILE *fp)
         if (adjacencies == NULL)
         {
             freeGraph(graph);
-            exit(ADJ_MALLOC_ERROR);
+            exit(MALLOC_ERROR);
         }
 
         i = 0; // reset i for vertices indexing
