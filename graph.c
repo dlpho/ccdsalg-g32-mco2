@@ -133,21 +133,6 @@ void addVertex(Graph *graph, Str20 key) {
 }
 
 /*
-	sets the edge value in adjacency matrix to true given the from-key
-	and the to-key from the graph
-*/
-void addEdge(Graph *graph, Str20 fromKey, Str20 toKey) {
-    int fromIndex = vertexIndex(graph, fromKey);
-    int toIndex = vertexIndex(graph, toKey);
-
-    // if both are valid indices
-    if (fromIndex != -1 && toIndex != -1) {
-        // set edge values in adjacency matrix to true
-        graph->edges[fromIndex][toIndex] = true;
-    }
-}
-
-/*
 	returns the degree (adjacent vertices) of a vertex
 */
 int vertexDegree(Graph *graph, Node *vertex) {
@@ -184,17 +169,23 @@ int vertexIndex(Graph *graph, Str20 key) {
 }
 
 /*
-    returns true if keys are equal (case insensitive, false otherwise.
+	sets the edge value in adjacency matrix to true given the from-key
+	and the to-key from the graph
 */
-bool sameKeys(const Str20 key1, const Str20 key2) {
-    Str20 lower1, lower2;
-    
-    strLower(key1, lower1);
-    strLower(key2, lower2);
-    
-    return strcmp(lower1, lower2) == 0;
+void addEdge(Graph *graph, Str20 fromKey, Str20 toKey) {
+    int fromIndex = vertexIndex(graph, fromKey);
+    int toIndex = vertexIndex(graph, toKey);
+
+    // if both are valid indices
+    if (fromIndex != -1 && toIndex != -1) {
+        // set edge values in adjacency matrix to true
+        graph->edges[fromIndex][toIndex] = true;
+    }
 }
 
+/*
+	for testing purposes; prints the values in adjacency matrix
+*/
 void printEdges(Graph* graph) {
 	int i, j;
 	
@@ -208,6 +199,20 @@ void printEdges(Graph* graph) {
 		
 		printf("\n");
 	}
+}
+
+/*
+    returns true if keys are equal (case insensitive, false otherwise.
+*/
+bool sameKeys(const Str20 key1, const Str20 key2) {
+    Str20 lower1, lower2;
+    
+    // convert to lowercase
+    strLower(key1, lower1);
+    strLower(key2, lower2);
+    
+    // return the boolean value of comparison
+    return strcmp(lower1, lower2) == 0;
 }
 
 /*
