@@ -1,7 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 
-typedef struct nodeTag {
+typedef struct nodeTag
+{
     Str20 key;
     bool visited;
     struct nodeTag *leftNode;

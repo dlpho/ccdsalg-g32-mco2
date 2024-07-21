@@ -1,24 +1,33 @@
-#include"node.h"
+#include <stdio.h>
+#include <stdbool.h>
+#include "node.h"
+#include "def.h"
 
-Node *createNode(Str20 key) {
+#define NODE_MALLOC_ERROR 3
+
+Node *createNode(Str20 key)
+{
     Node *node = (Node *)malloc(sizeof(Node));
-	
-	// if allocation of memory fails
-	if (node == NULL) {
-		exit(NODE_MALLOC_ERROR);
-	}
-	
+
+    // if allocation of memory fails
+    if (node == NULL)
+    {
+        exit(NODE_MALLOC_ERROR);
+    }
+
     // copy given key into vertex
     strcpy(node->key, key);
-	
-	// set visited as false by default
-	node->visited = false;
-	
+
+    // set visited as false by default
+    node->visited = false;
+
     return node;
 }
 
-void freeNode(Node *node) {
-    if (node != NULL) {
+void freeNode(Node *node)
+{
+    if (node != NULL)
+    {
         free(node);
     }
 }
