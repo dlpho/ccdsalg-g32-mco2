@@ -1,0 +1,8 @@
+Bruce	1
+Clark	2
+Diana	3
+Hal	2
+
+Clark Diana Hal Bruce
+
+Clark Diana Bruce Hal
