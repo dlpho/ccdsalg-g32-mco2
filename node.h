@@ -1,6 +1,9 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include "def.h"
+
+
 typedef struct nodeTag
 {
     Str20 key;

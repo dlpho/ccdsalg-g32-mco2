@@ -1,3 +1,4 @@
+
 #include "graph.h"
 
 /*
@@ -196,6 +197,17 @@ int vertexIndex(Graph *graph, Str20 key)
 }
 
 /*
+	resets the visited flag of each vertex node for DFS
+*/
+void resetVisited(Graph *graph)
+{
+    for (int i = 0; i < graph->numVertices; i++)
+    {
+        graph->vertices[i]->visited = false;
+    }
+}
+
+/*
     sets the edge value in adjacency matrix to true given the from-key
     and the to-key from the graph
 */
@@ -232,6 +244,8 @@ void printEdges(Graph *graph)
         printf("\n");
     }
 }
+
+
 
 /*
     returns true if keys are equal (case insensitive), false otherwise.

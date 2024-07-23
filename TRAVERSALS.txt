@@ -1,8 +1,16 @@
-Bruce	1
-Clark	2
-Diana	3
-Hal	2
+Noah	5
+Nick	4
+Joakim	2
+Folio	4
+Plante	3
+Vic	4
+Emz	1
+Jesse	3
+Andy	1
+Leo	5
+Chris	3
 
-Clark Diana Hal Bruce
+Noah Joakim Leo Nick Plante Vic Andy Chris Folio Emz Jesse 
 
-Clark Diana Bruce Hal
+Noah Joakim Vic Andy Leo Chris Emz Jesse Nick Folio Plante 
+

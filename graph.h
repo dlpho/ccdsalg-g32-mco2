@@ -1,6 +1,10 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include "def.h"
+#include "node.h"
+
+
 typedef struct graphTag
 {
     int numVertices;
@@ -14,6 +18,7 @@ void freeGraph(Graph *graph);
 void addVertex(Graph *graph, Str20 key);
 int vertexDegree(Graph *graph, Node *vertex);
 int vertexIndex(Graph *graph, Str20 key);
+void resetVisited(Graph *graph);
 void addEdge(Graph *graph, Str20 fromKey, Str20 toKey);
 void printEdges(Graph *graph);
 bool sameKeys(const char *key1, const char *key2);

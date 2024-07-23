@@ -6,31 +6,38 @@
 int main()
 {
     Str100 filename;
-    Str20 startVertex;
+    Str20 startKey;
+    FILE *file;
 	
-	// ask input
+	// ask for graph file name
     printf("Input filename: ");
     scanf("%s", filename);
-
-    FILE *file = fopen(filename, "r");
+	
+	// exit if file does not exist
+    file = fopen(filename, "r");
     if (file == NULL)
     {
         printf("%s not found.\n", filename);
         exit(FILE_NOT_FOUND_ERROR);
     }
-
+	
+	// create graph from content in file
     Graph *graph = createGraphFromFile(file);
-
+    fclose(file);
+	
+	// ask for starting vertex
     printf("Input start vertex for the transversal: ");
-    scanf("%s", startVertex);
-
-    if (vertexIndex(graph, startVertex) == -1)
+    scanf("%s", startKey);
+	
+	// exit if vertex does not exist in graph
+    if (vertexIndex(graph, startKey) == -1)
     {
-        printf("Vertex %s not found.\n", startVertex);
+        printf("Vertex %s not found.\n", startKey);
         exit(INVALID_VERTEX_ERROR);
     }
 
-    // TODO: add transversal codes
-
+    // proceed to print traversals to file
+    traversalsToFile(graph, startKey);
+	
     return 0;
 }
