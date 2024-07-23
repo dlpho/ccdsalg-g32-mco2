@@ -1,0 +1,29 @@
+BFS
+- bfs (function that starts the recursion call; not recursive itself)
+- bfsRecursive (recursive; responsible for the traversing)
+
+1. bfs(): resets all visited flags to 'false' with resetVisited()
+2. 	  calls for bfsRecursive()
+3. bfsRecursive(): makes array of indexes for adjacent vertices of the start vertex
+4. 		   print start vertex (if not already visited) then set visited to 'true'
+5.		   list all the indexes of adjacent nodes and counts
+6.		   check whether the adjacent vertices are allVisited
+		   a.  if true = free memory allocated for adjIndices and RETURN
+		   b.  if false = proceed to 7
+7. 		   sort the index array by alphabetical order of their vertex keys
+8.		   print each adjacent vertex keys (if visited = false) then set visited = true
+9. 		   call bfsRecursive() for each adjacent vertex BY ORDER -> #3
+10.		   free memory allocated for adjIndices and RETURN
+
+DFS
+- dfs (function that starts the recursion call; not recursive itself)
+- dfsRecursive (recursive; responsible for the traversing)
+
+1. dfs(): resets all visited flags to 'false' with resetVisited()
+2. 	  calls for dfsRecursive()
+3. dfsRecursive(): print start vertex key
+4. 		   set start vertex to visited = true
+		   list all indexes of adjacent nodes and counts
+5. 		   sort index array by alphabetical order of their vertex keys
+6. 		   recursively visit each node (if visited = false) BY ORDER -> #3
+7.		   free memory allocated for adjIndices and RETURN

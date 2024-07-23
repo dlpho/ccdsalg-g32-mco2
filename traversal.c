@@ -23,6 +23,7 @@ void traversalsToFile(Graph* graph, Str20 startKey) {
     // close file
     fclose(fp);
 }
+
 void bfs(FILE *fp, Graph *graph, Str20 startKey) {
     // reset visited flags for verticed in graph
     resetVisited(graph);
@@ -32,9 +33,9 @@ void bfs(FILE *fp, Graph *graph, Str20 startKey) {
     fprintf(fp, "\n");
 }
 
-
 void bfsRecursive(FILE *fp, Graph *graph, int startIndex) {
-    int i, j, count, temp;
+    bool allVisited;
+	int i, j, count, temp;
     int *adjIndices = (int *)malloc(graph->numVertices * sizeof(int));
 
     // print and mark the start vertex as visited if not already visited
@@ -43,7 +44,7 @@ void bfsRecursive(FILE *fp, Graph *graph, int startIndex) {
         graph->vertices[startIndex]->visited = true;
     }
 
-    // find all adjacent nodes
+    // find all adjacent nodes and count
     count = 0;
     for (i = 0; i < graph->numVertices; i++) {
         if (graph->edges[startIndex][i]) {
@@ -52,7 +53,7 @@ void bfsRecursive(FILE *fp, Graph *graph, int startIndex) {
     }
 
     // check if all adjacent nodes are visited
-    bool allVisited = true;
+    allVisited = true;
     for (i = 0; i < count; i++) {
         if (!graph->vertices[adjIndices[i]]->visited) {
             allVisited = false;
@@ -69,7 +70,7 @@ void bfsRecursive(FILE *fp, Graph *graph, int startIndex) {
     // sort the adjacent indices alphabetically
     sortAlphabetically(graph, adjIndices, count);
     
-    // print all unvisited adjacent nodes
+    // print all unvisited adjacent nodes first
     for (i = 0; i < count; i++) {
         if (!graph->vertices[adjIndices[i]]->visited) {
             fprintf(fp, "%s ", graph->vertices[adjIndices[i]]->key);
@@ -77,17 +78,14 @@ void bfsRecursive(FILE *fp, Graph *graph, int startIndex) {
         }
     }
     
-    // recursively visit each unvisited adjacent node
+    // then recursively visit each unvisited adjacent node
     for (i = 0; i < count; i++) {
-            bfsRecursive(fp, graph, adjIndices[i]);
+        bfsRecursive(fp, graph, adjIndices[i]);
     }
 
     // free the array of adjacent indices
     free(adjIndices);
 }
-
-
-
 
 void dfs(FILE *fp, Graph *graph, Str20 startKey) {
     // reset visited flags for vertices
@@ -101,7 +99,6 @@ void dfs(FILE *fp, Graph *graph, Str20 startKey) {
 void dfsRecursive(FILE* fp, Graph *graph, int startIndex) {
     int i, j, temp, count = 0;
     int *adjIndices = (int *)malloc(graph->numVertices * sizeof(int));
-    
     Node *vertex = graph->vertices[startIndex];
     
     // print the key of the current vertex
