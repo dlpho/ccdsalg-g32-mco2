@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdbool.h>
 #include "node.h"
-#include "def.h"
 
 Node *createNode(Str20 key)
 {

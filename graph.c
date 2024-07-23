@@ -1,12 +1,4 @@
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "graph.h"
-#include "node.h"
-#include "def.h"
-
-#define INSUFFICIENT_DATA_ERROR 4
 
 /*
     initializes and returns a graph
@@ -55,7 +47,7 @@ Graph *createGraphFromFile(FILE *fp)
     int i = 0, j;
     Graph *graph;
 
-    // Scan number of vertices from the first line
+    // scan number of vertices from the first line
     if (fscanf(fp, "%d", &num) != EOF)
     {
 
@@ -144,7 +136,7 @@ void freeGraph(Graph *graph)
 }
 
 /*
-    turns key into a node vertex then adds the the first null space
+    turns key into a node vertex then adds it to the first null space
 */
 void addVertex(Graph *graph, Str20 key)
 {
@@ -162,7 +154,7 @@ void addVertex(Graph *graph, Str20 key)
 }
 
 /*
-    returns the degree (adjacent vertices) of a vertex
+    returns the degree (count of adjacent vertices) of a vertex
 */
 int vertexDegree(Graph *graph, Node *vertex)
 {
@@ -215,7 +207,7 @@ void addEdge(Graph *graph, Str20 fromKey, Str20 toKey)
     // if both are valid indices
     if (fromIndex != -1 && toIndex != -1)
     {
-        // set edge values in adjacency matrix to true
+        // set edge value in adjacency matrix to true
         graph->edges[fromIndex][toIndex] = true;
     }
 }

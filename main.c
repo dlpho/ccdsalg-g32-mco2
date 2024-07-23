@@ -1,15 +1,14 @@
-#include <stdio.h>
-#include "graph.h"
+#include "def.h"
+#include "node.c"
 #include "graph.c"
-
-#define FILE_NOT_FOUND_ERROR 5
-#define INVALID_VERTEX_ERROR 6
+#include "traversal.c"
 
 int main()
 {
-    char filename[100];
+    Str100 filename;
     Str20 startVertex;
-
+	
+	// ask input
     printf("Input filename: ");
     scanf("%s", filename);
 
@@ -20,7 +19,7 @@ int main()
         exit(FILE_NOT_FOUND_ERROR);
     }
 
-    Graph *graph = createGraphFromFile(filename);
+    Graph *graph = createGraphFromFile(file);
 
     printf("Input start vertex for the transversal: ");
     scanf("%s", startVertex);

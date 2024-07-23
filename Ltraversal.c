@@ -5,11 +5,11 @@
 #include "node.h"
 #include "def.h"
 
-// Forward declarations
+// forward declarations
 void bfsRecursive(Graph *graph, Str20 key);
 void dfsRecursive(Graph *graph, Node *node);
 int vertexIndex(Graph *graph, Str20 key);
-void resetVisited(Graph *graph); // Function to reset visited status of nodes
+void resetVisited(Graph *graph);
 
 void bfs(Graph *graph, Str20 startKey) {
     int startIndex = vertexIndex(graph, startKey);
