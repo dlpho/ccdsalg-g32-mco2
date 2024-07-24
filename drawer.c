@@ -236,5 +236,19 @@ int main()
 
     drawTree(graph);
 
+    Graph *graph2 = createGraph(4);
+    Str20 keys2[] = {"A", "B", "C", "D"};
+    addVertex(graph2, keys2[0]);
+    addVertex(graph2, keys2[1]);
+    addVertex(graph2, keys2[2]);
+    addVertex(graph2, keys2[3]);
+
+    addEdge(graph2, keys2[0], keys2[1]);
+    addEdge(graph2, keys2[0], keys2[2]);
+    addEdge(graph2, keys2[1], keys2[3]);
+    addEdge(graph2, keys2[2], keys2[3]);
+
+    drawGraph(graph2);
+
     return 0;
 }
