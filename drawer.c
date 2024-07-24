@@ -21,6 +21,7 @@ void drawTree(Graph *graph);
 void drawGraph(Graph *graph);
 void printNode(Node *node, int x, int y, FILE *fp);
 void printLine(int x1, int y1, int x2, int y2, FILE *fp);
+void depthFinder(Graph *graph, int *depthArray, int vertexIndex, int parentIndex);
 
 void drawGraph(Graph *graph)
 {
@@ -77,9 +78,46 @@ void drawGraph(Graph *graph)
     printf("Graph drawn to %s\n", fileName);
 }
 
+/**
+ * ! IMPORTANT ASSUMPTION: First node in graph is the root node
+ * ! IMPORTANT ASSUMPTION: Nodes added are in order. i.e. children of Node B is added first before children of Node C
+ */
 void drawTree(Graph *graph)
 {
-    // Generate statistics for calculations
+    int depthOfNode[graph->numVertices];
+    int childrenCount[graph->numVertices];
+    int depthWidth[graph->numVertices];
+    int nodesAtDepthProcessed[graph->numVertices];
+
+    // initialize values to 0
+    for (int i = 0; i < graph->numVertices; i++)
+    {
+        depthOfNode[i] = 0;
+        childrenCount[i] = 0;
+        depthWidth[i] = 0;
+        nodesAtDepthProcessed[i] = 0;
+    }
+
+    for (int i = 0; i < graph->numVertices; i++)
+    {
+        for (int j = 0; j < graph->numVertices; j++)
+            if (graph->edges[i][j])
+                childrenCount[i]++;
+        if (i != 0)             // except for root node
+            childrenCount[i]--; // remove parent from children count
+    }
+
+    // determine depth of each node
+    depthFinder(graph, depthOfNode, 0, -1);
+
+    // count nodes at each depth
+    for (int i = 0; i < graph->numVertices; i++)
+        depthWidth[depthOfNode[i]]++;
+
+    int widestDepth = 0;
+    for (int i = 0; i < graph->numVertices; i++)
+        if (depthOfNode[i] > widestDepth)
+            widestDepth = depthOfNode[i];
 
     char fileName[20 + 4 + 1]; // 20 char. for file name, 4 char. for ".svg", 1 char. for null terminator
     printf("File name for svg file (20 char. max).\n Warning: If file exists, it will be overwritten.\n");
@@ -100,10 +138,62 @@ void drawTree(Graph *graph)
     // Write svg header
     fprintf(fp, "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n");
 
+    int totalWidth = depthWidth[widestDepth] * (NODE_WIDTH + NODE_X_MARGIN) - NODE_X_MARGIN;
+    int centerX = totalWidth / 2;
+    int nodePositions[graph->numVertices][2];
+    for (int i = 0; i < graph->numVertices; i++)
+    {
+        // Calculate the horizontal position
+        int nodesAtCurrentDepth = depthWidth[depthOfNode[i]];
+        int processedNodesAtCurrentDepth = nodesAtDepthProcessed[depthOfNode[i]]++;
+        int widthOfCurrentDepth = nodesAtCurrentDepth * (NODE_WIDTH + NODE_X_MARGIN) - NODE_X_MARGIN;
+        int offsetPerNode = (widthOfCurrentDepth + NODE_X_MARGIN) / nodesAtCurrentDepth;
+        int x = centerX;
+        x -= widthOfCurrentDepth / 2;
+        x += offsetPerNode * processedNodesAtCurrentDepth;
+
+        // Calculate the vertical position
+        int y = depthOfNode[i] * (NODE_Y_MARGIN + NODE_HEIGHT);
+
+        nodePositions[i][0] = x;
+        nodePositions[i][1] = y;
+    }
+
+    for (int i = 0; i < graph->numVertices; i++)
+    {
+        for (int j = 0; j < graph->numVertices; j++)
+        {
+            if (graph->edges[i][j] == 1)
+            { // Assuming adjMatrix is used to store edges
+                int x1 = nodePositions[i][0];
+                int y1 = nodePositions[i][1];
+                int x2 = nodePositions[j][0];
+                int y2 = nodePositions[j][1];
+                printLine(x1 + NODE_WIDTH / 2, y1 + NODE_HEIGHT / 2, x2 + NODE_WIDTH / 2, y2 + NODE_HEIGHT / 2, fp);
+            }
+        }
+    }
+
+    // iterate through node positions and print nodes
+    for (int i = 0; i < graph->numVertices; i++)
+        printNode(graph->vertices[i], nodePositions[i][0], nodePositions[i][1], fp);
+
     // Write svg footer
     fprintf(fp, "</svg>");
     fclose(fp);
     printf("Tree drawn to %s\n", fileName);
+}
+
+void depthFinder(Graph *graph, int *depthArray, int vertexIndex, int parentIndex)
+{
+    for (int i = 0; i < graph->numVertices; i++)
+    {
+        if (graph->edges[vertexIndex][i])
+        {
+            depthArray[i] = depthArray[vertexIndex] + 1;
+            depthFinder(graph, depthArray, i, vertexIndex);
+        }
+    }
 }
 
 /**
@@ -125,23 +215,26 @@ void printLine(int x1, int y1, int x2, int y2, FILE *fp)
 
 int main()
 {
-    Graph *graph = createGraph(5);
-    Str20 keys[] = {"A", "B", "C", "D", "E"};
+    Graph *graph = createGraph(8);
+    Str20 keys[] = {"A", "B", "C", "D", "E", "F", "G", "H"};
     addVertex(graph, keys[0]);
     addVertex(graph, keys[1]);
     addVertex(graph, keys[2]);
-    addVertex(graph, keys[3]);
     addVertex(graph, keys[4]);
+    addVertex(graph, keys[5]);
+    addVertex(graph, keys[3]);
+    addVertex(graph, keys[6]);
+    addVertex(graph, keys[7]);
 
     addEdge(graph, keys[0], keys[1]);
-    addEdge(graph, keys[0], keys[3]);
-    addEdge(graph, keys[1], keys[2]);
-    addEdge(graph, keys[2], keys[4]);
+    addEdge(graph, keys[0], keys[2]);
+    addEdge(graph, keys[1], keys[4]);
+    addEdge(graph, keys[1], keys[5]);
     addEdge(graph, keys[2], keys[3]);
-    addEdge(graph, keys[3], keys[4]);
-    addEdge(graph, keys[4], keys[0]);
+    addEdge(graph, keys[2], keys[6]);
+    addEdge(graph, keys[2], keys[7]);
 
-    drawGraph(graph);
+    drawTree(graph);
 
     return 0;
 }
