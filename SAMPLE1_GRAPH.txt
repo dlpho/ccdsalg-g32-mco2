@@ -1,13 +1,9 @@
-11
+7
 
-Alice Bob Charlie -1
-Bob -1
-Charlie Alice Bob Eva -1
-David Bob Eva Frank -1
-Eva Charlie David George Alice Bob -1
-Frank David George Henry -1
-Frank Irene -1
-Henry Frank George Jack -1
-Irene George Henry -1
-Jack Henry -1
-Jack Alice -1
+Fiona Phillip Liam Carl Ian -1
+Phillip Ian Fiona Carl -1
+Ian Phillip Fiona Debbie -1
+Debbie Ian Liam -1
+Carl Fiona Phillip Liam -1
+Liam Frank Fiona Carl Debbie -1
+Frank Liam -1

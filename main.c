@@ -35,7 +35,10 @@ int main()
         printf("Vertex %s not found.\n", startKey);
         exit(INVALID_VERTEX_ERROR);
     }
-
+	
+	// FOR TESTING; print adjacency matrix
+    printEdges(graph);
+    
     // proceed to print traversals to file
     traversalsToFile(graph, startKey);
 	
