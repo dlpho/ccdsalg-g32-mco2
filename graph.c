@@ -1,6 +1,5 @@
-
+#include "node.h"
 #include "graph.h"
-#include "node.c"
 
 /*
     initializes and returns a graph
@@ -221,7 +220,9 @@ void addEdge(Graph *graph, Str20 fromKey, Str20 toKey)
     if (fromIndex != -1 && toIndex != -1)
     {
         // set edge value in adjacency matrix to true
+        // ensure that it is SYMMETRIC
         graph->edges[fromIndex][toIndex] = true;
+//        graph->edges[toIndex][fromIndex] = true;
     }
 }
 
