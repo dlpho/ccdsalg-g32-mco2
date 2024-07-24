@@ -1,5 +1,6 @@
 
 #include "graph.h"
+#include "node.c"
 
 /*
     initializes and returns a graph
@@ -197,7 +198,7 @@ int vertexIndex(Graph *graph, Str20 key)
 }
 
 /*
-	resets the visited flag of each vertex node for DFS
+    resets the visited flag of each vertex node for DFS
 */
 void resetVisited(Graph *graph)
 {
@@ -244,8 +245,6 @@ void printEdges(Graph *graph)
         printf("\n");
     }
 }
-
-
 
 /*
     returns true if keys are equal (case insensitive), false otherwise.
