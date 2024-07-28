@@ -5,7 +5,7 @@
 #ifndef TRANVERSAL_C
 #define TRANVERSAL_C
 
-void traversalsToFile(Graph *graph, Str20 startKey, Graph *tree)
+void traversalsToFile(Graph *graph, Str20 startKey, Graph *treeBfs, Graph *treeDfs)
 {
     FILE *fp;
     int i;
@@ -22,9 +22,9 @@ void traversalsToFile(Graph *graph, Str20 startKey, Graph *tree)
     fprintf(fp, "\n");
 
     // print traversals from start key
-    bfs(fp, graph, startKey, tree);
+    bfs(fp, graph, startKey, treeBfs);
     fprintf(fp, "\n");
-    dfs(fp, graph, startKey);
+    dfs(fp, graph, startKey, treeDfs);
     fprintf(fp, "\n");
 
     // close file
@@ -109,17 +109,19 @@ void bfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree)
     free(adjIndices);
 }
 
-void dfs(FILE *fp, Graph *graph, Str20 startKey)
+void dfs(FILE *fp, Graph *graph, Str20 startKey, Graph *tree)
 {
     // reset visited flags for vertices
     resetVisited(graph);
 
+    // add root node
+    addVertex(tree, startKey);
     // start DFS from the specificed start key
-    dfsRecursive(fp, graph, vertexIndex(graph, startKey));
+    dfsRecursive(fp, graph, vertexIndex(graph, startKey), tree);
     fprintf(fp, "\n");
 }
 
-void dfsRecursive(FILE *fp, Graph *graph, int startIndex)
+void dfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree)
 {
     int i, j, temp, count = 0;
     int *adjIndices = (int *)malloc(graph->numVertices * sizeof(int));
@@ -148,7 +150,9 @@ void dfsRecursive(FILE *fp, Graph *graph, int startIndex)
     {
         if (!graph->vertices[adjIndices[i]]->visited)
         {
-            dfsRecursive(fp, graph, adjIndices[i]);
+            addVertex(tree, graph->vertices[adjIndices[i]]->key);
+            addEdge(tree, vertex->key, graph->vertices[adjIndices[i]]->key);
+            dfsRecursive(fp, graph, adjIndices[i], tree);
         }
     }
 
