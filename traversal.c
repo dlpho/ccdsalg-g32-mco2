@@ -175,3 +175,19 @@ void sortAlphabetically(Graph *graph, int *adjIndices, int count)
 }
 
 #endif // TRANVERSAL_C
+
+#ifndef MAIN_C
+#include <stdio.h>
+#include "graph.c"
+
+int main()
+{
+    FILE *file = fopen("SAMPLE2_GRAPH.txt", "r");
+    Graph *graph = createGraphFromFile(file);
+    fclose(file);
+
+    // add more code
+
+    return 0;
+}
+#endif // MAIN_C
