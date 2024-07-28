@@ -30,7 +30,7 @@ int main()
     // ask for starting vertex
     printf("Input start vertex for the transversal: ");
     scanf("%s", startKey);
-    // strcpy(startKey, "A"); // FOR TESTING / Swap string with whatever node
+    // strcpy(startKey, "Noah"); // FOR TESTING / Swap string with whatever node
 
     // exit if vertex does not exist in graph
     if (vertexIndex(graph, startKey) == -1)
