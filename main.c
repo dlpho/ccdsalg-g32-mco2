@@ -13,6 +13,7 @@ int main()
     // ask for graph file name
     printf("Input filename: ");
     scanf("%s", filename);
+    // strcpy(filename, "SAMPLE2_GRAPH.txt"); // FOR TESTING / Swap string with whatever file
 
     // exit if file does not exist
     file = fopen(filename, "r");
@@ -29,6 +30,7 @@ int main()
     // ask for starting vertex
     printf("Input start vertex for the transversal: ");
     scanf("%s", startKey);
+    // strcpy(startKey, "A"); // FOR TESTING / Swap string with whatever node
 
     // exit if vertex does not exist in graph
     if (vertexIndex(graph, startKey) == -1)
