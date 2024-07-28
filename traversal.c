@@ -6,7 +6,9 @@
 #include "queue.h"
 #include "queue.c"
 
-void traversalsToFile(Graph *graph, Str20 startKey, Graph *treeBfs, Graph *treeDfs)
+/* As per specification, only BFS is required for drawing */
+// void traversalsToFile(Graph *graph, Str20 startKey, Graph *treeBfs, Graph *treeDfs)
+void traversalsToFile(Graph *graph, Str20 startKey, Graph *treeBfs)
 {
     FILE *fp;
     int i;
@@ -25,90 +27,15 @@ void traversalsToFile(Graph *graph, Str20 startKey, Graph *treeBfs, Graph *treeD
     // print traversals from start key
     bfs(fp, graph, startKey, treeBfs);
     fprintf(fp, "\n");
-    dfs(fp, graph, startKey, treeDfs);
+
+    /* As per specification, only BFS is required for drawing */
+    // dfs(fp, graph, startKey, treeDfs);
+    dfs(fp, graph, startKey);
     fprintf(fp, "\n");
 
     // close file
     fclose(fp);
 }
-
-/* // as per specification, BFS is only required for drawing
-void bfs(FILE *fp, Graph *graph, Str20 startKey, Graph *tree)
-{
-    // reset visited flags for verticed in graph
-    resetVisited(graph);
-
-    // start BFS from given start key
-    bfsRecursive(fp, graph, vertexIndex(graph, startKey), tree);
-    fprintf(fp, "\n");
-}
-
-void bfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree)
-{
-    bool allVisited;
-    int i, j, count, temp;
-    int *adjIndices = (int *)malloc(graph->numVertices * sizeof(int));
-
-    // print and mark the start vertex as visited if not already visited
-    if (!graph->vertices[startIndex]->visited)
-    {
-        addVertex(tree, graph->vertices[startIndex]->key);
-        fprintf(fp, "%s ", graph->vertices[startIndex]->key);
-        graph->vertices[startIndex]->visited = true;
-    }
-
-    // find all adjacent nodes and count
-    count = 0;
-    for (i = 0; i < graph->numVertices; i++)
-    {
-        if (graph->edges[startIndex][i])
-        {
-            adjIndices[count++] = i;
-        }
-    }
-
-    // check if all adjacent nodes are visited
-    allVisited = true;
-    for (i = 0; i < count; i++)
-    {
-        if (!graph->vertices[adjIndices[i]]->visited)
-        {
-            allVisited = false;
-            break;
-        }
-    }
-
-    // if all adjacent nodes are visited, return
-    if (allVisited)
-    {
-        free(adjIndices);
-        return;
-    }
-
-    // sort the adjacent indices alphabetically
-    sortAlphabetically(graph, adjIndices, count);
-
-    // print all unvisited adjacent nodes first
-    for (i = 0; i < count; i++)
-    {
-        if (!graph->vertices[adjIndices[i]]->visited)
-        {
-            addVertex(tree, graph->vertices[adjIndices[i]]->key);
-            addEdge(tree, graph->vertices[startIndex]->key, graph->vertices[adjIndices[i]]->key);
-            fprintf(fp, "%s ", graph->vertices[adjIndices[i]]->key);
-            graph->vertices[adjIndices[i]]->visited = true;
-        }
-    }
-
-    // then recursively visit each unvisited adjacent node
-    for (i = 0; i < count; i++)
-    {
-        bfsRecursive(fp, graph, adjIndices[i], tree);
-    }
-
-    // free the array of adjacent indices
-    free(adjIndices);
-} */
 
 void bfs(FILE *fp, Graph *graph, Str20 startKey, Graph *tree)
 {
@@ -153,19 +80,6 @@ void bfsRecursive(FILE *fp, Graph *graph, Str20 key, struct Queue *q, Graph *tre
     // Sort the adjacent indices based on the alphabetical order of keys
     sortAlphabetically(graph, adjIndices, count);
 
-    /* for (int i = 0; i < count - 1; i++)
-    {
-        for (int j = i + 1; j < count; j++)
-        {
-            if (strcmp(graph->vertices[adjIndices[i]]->key, graph->vertices[adjIndices[j]]->key) > 0)
-            {
-                int temp = adjIndices[i];
-                adjIndices[i] = adjIndices[j];
-                adjIndices[j] = temp;
-            }
-        }
-    } */
-
     // Loop through the adjacent indices and enqueue the ones that aren't explored yet
     for (int i = 0; i < count; i++)
     {
@@ -191,19 +105,24 @@ void bfsRecursive(FILE *fp, Graph *graph, Str20 key, struct Queue *q, Graph *tre
     }
 }
 
-void dfs(FILE *fp, Graph *graph, Str20 startKey, Graph *tree)
+/* As per specification, only BFS is required for drawing */
+// void dfs(FILE *fp, Graph *graph, Str20 startKey, Graph *tree)
+void dfs(FILE *fp, Graph *graph, Str20 startKey)
 {
     // reset visited flags for vertices
     resetVisited(graph);
 
     // add root node
-    addVertex(tree, startKey);
+    // addVertex(tree, startKey);
     // start DFS from the specificed start key
-    dfsRecursive(fp, graph, vertexIndex(graph, startKey), tree);
+    // dfsRecursive(fp, graph, vertexIndex(graph, startKey), tree);
+    dfsRecursive(fp, graph, vertexIndex(graph, startKey));
     fprintf(fp, "\n");
 }
 
-void dfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree)
+/* As per specification, only BFS is required for drawing */
+// void dfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree)
+void dfsRecursive(FILE *fp, Graph *graph, int startIndex)
 {
     int i, count = 0;
     int *adjIndices = (int *)malloc(graph->numVertices * sizeof(int));
@@ -232,10 +151,12 @@ void dfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree)
     {
         if (!graph->vertices[adjIndices[i]]->visited)
         {
-            addVertex(tree, graph->vertices[adjIndices[i]]->key);
-            addEdge(tree, vertex->key, graph->vertices[adjIndices[i]]->key);
+            // addVertex(tree, graph->vertices[adjIndices[i]]->key);
+            // addEdge(tree, vertex->key, graph->vertices[adjIndices[i]]->key);
             printf("Starting a recursion\n");
-            dfsRecursive(fp, graph, adjIndices[i], tree);
+            /* As per specification, only BFS is required for drawing */
+            // dfsRecursive(fp, graph, adjIndices[i], tree);
+            dfsRecursive(fp, graph, adjIndices[i]);
             printf("Finished a recursion\n");
         }
     }

@@ -12,9 +12,9 @@ int main()
     FILE *file;
 
     // ask for graph file name
-    // printf("Input filename: ");
-    // scanf("%s", filename);
-    strcpy(filename, "SAMPLE2_GRAPH.txt"); // FOR TESTING / Swap string with whatever file
+    printf("Input filename: ");
+    scanf("%s", filename);
+    // strcpy(filename, "SAMPLE2_GRAPH.txt"); // FOR TESTING / Swap string with whatever file
 
     // exit if file does not exist
     file = fopen(filename, "r");
@@ -29,9 +29,9 @@ int main()
     fclose(file);
 
     // ask for starting vertex
-    // printf("Input start vertex for the transversal: ");
-    // scanf("%s", startKey);
-    strcpy(startKey, "Noah"); // FOR TESTING / Swap string with whatever node
+    printf("Input start vertex for the transversal: ");
+    scanf("%s", startKey);
+    // strcpy(startKey, "Noah"); // FOR TESTING / Swap string with whatever node
 
     // exit if vertex does not exist in graph
     if (vertexIndex(graph, startKey) == -1)
@@ -40,13 +40,12 @@ int main()
         exit(INVALID_VERTEX_ERROR);
     }
 
-    // FOR TESTING; print adjacency matrix
-    // printEdges(graph);
-
     // proceed to print traversals to file
     Graph *treeBfs = createGraph(graph->numVertices);
-    Graph *treeDfs = createGraph(graph->numVertices);
-    traversalsToFile(graph, startKey, treeBfs, treeDfs);
+    /* As per specification, only BFS is required for drawing */
+    // Graph *treeDfs = createGraph(graph->numVertices);
+    // traversalsToFile(graph, startKey, treeBfs, treeDfs);
+    traversalsToFile(graph, startKey, treeBfs);
 
     // cut off last 4 characters of filename
     filename[strlen(filename) - 4] = '\0';
@@ -58,8 +57,9 @@ int main()
     drawGraph(graph, buffer);
     sprintf(buffer, "%s_bfs.svg", filename);
     drawTree(treeBfs, buffer);
-    sprintf(buffer, "%s_dfs.svg", filename);
-    drawTree(treeDfs, buffer);
+    /* As per specification, only BFS is required for drawing */
+    // sprintf(buffer, "%s_dfs.svg", filename);
+    // drawTree(treeDfs, buffer);
 
     freeGraph(graph);
 
