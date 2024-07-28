@@ -16,8 +16,8 @@ Graph *createGraph(int num)
     graph->numVertices = num;
 
     // allocate memory for node array and adjacency matrix
-    graph->vertices = (Node **)malloc(num * sizeof(Node *));
-    graph->edges = (bool **)malloc(num * sizeof(bool *));
+    graph->vertices = (Node **)calloc(num, sizeof(Node *));
+    graph->edges = (bool **)calloc(num, sizeof(bool *));
 
     // if errors exist during memory allocation
     if (graph == NULL || graph->vertices == NULL || graph->edges == NULL)

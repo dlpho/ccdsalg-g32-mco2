@@ -4,7 +4,7 @@
 #include "def.h"
 #include "graph.h"
 
-Graph *traversalsToFile(Graph *graph, Str20 startKey);
+void traversalsToFile(Graph *graph, Str20 startKey, Graph *tree);
 void bfs(FILE *fp, Graph *graph, Str20 startKey, Graph *tree); // as per specification, BFS is only required for drawing
 void bfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree);
 void dfs(FILE *fp, Graph *graph, Str20 startKey);

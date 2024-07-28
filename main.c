@@ -41,7 +41,8 @@ int main()
     // printEdges(graph);
 
     // proceed to print traversals to file
-    Graph *tree = traversalsToFile(graph, startKey);
+    Graph *tree = createGraph(graph->numVertices);
+    traversalsToFile(graph, startKey, tree);
 
     // cut off last 4 characters of filename
     filename[strlen(filename) - 4] = '\0';
@@ -49,6 +50,8 @@ int main()
     // draw graph and tree
     drawGraph(graph, filename);
     drawTree(tree, filename);
+
+    freeGraph(graph);
 
     return 0;
 }

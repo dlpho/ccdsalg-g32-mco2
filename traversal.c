@@ -3,11 +3,10 @@
 #ifndef TRANVERSAL_C
 #define TRANVERSAL_C
 
-Graph *traversalsToFile(Graph *graph, Str20 startKey)
+void traversalsToFile(Graph *graph, Str20 startKey, Graph *tree)
 {
     FILE *fp;
     int i;
-    Graph *tree = createGraph(graph->numVertices);
 
     // open file for write
     fp = fopen("TRAVERSALS.txt", "w");
@@ -21,14 +20,13 @@ Graph *traversalsToFile(Graph *graph, Str20 startKey)
     fprintf(fp, "\n");
 
     // print traversals from start key
-    bfs(fp, graph, startKey, graph);
+    bfs(fp, graph, startKey, tree);
     fprintf(fp, "\n");
     dfs(fp, graph, startKey);
     fprintf(fp, "\n");
 
     // close file
     fclose(fp);
-    return tree; // send tree for further processing
 }
 
 // as per specification, BFS is only required for drawing
