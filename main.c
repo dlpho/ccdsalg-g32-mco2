@@ -29,7 +29,7 @@ int main()
     fclose(file);
 
     // ask for starting vertex
-    printf("Input start vertex for the transversal: ");
+    printf("Input start vertex for the traversal: ");
     scanf("%s", startKey);
     // strcpy(startKey, "Noah"); // FOR TESTING / Swap string with whatever node
 
