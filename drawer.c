@@ -215,27 +215,3 @@ void printLine(int x1, int y1, int x2, int y2, FILE *fp)
 }
 
 #endif
-
-#ifndef MAIN
-// #define MAIN // uncomment this line to compile this file
-
-#include "traversal.h"
-#include "traversal.c"
-
-int main()
-{
-    FILE *file = fopen("SAMPLE2_GRAPH.txt", "r");
-    Graph *graph = createGraphFromFile(file);
-    fclose(file);
-
-    Graph *tree = createGraph(graph->numVertices);
-    traversalsToFile(graph, graph->vertices[0]->key, tree); // assume vertex 0 is the root
-
-    Str100 filename = "TEST_SCRIPT";
-    drawGraph(graph, filename);
-    drawTree(tree, filename);
-
-    return 0;
-}
-
-#endif // MAIN

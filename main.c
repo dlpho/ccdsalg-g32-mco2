@@ -4,8 +4,6 @@
 #include "traversal.c"
 #include "drawer.c"
 
-#define MAIN
-
 int main()
 {
     Str100 filename;

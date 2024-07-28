@@ -1,3 +1,5 @@
+#define MAIN
+
 #include "traversal.h"
 
 #ifndef TRANVERSAL_C
@@ -175,20 +177,3 @@ void sortAlphabetically(Graph *graph, int *adjIndices, int count)
 }
 
 #endif // TRANVERSAL_C
-
-#ifndef MAIN
-// #define MAIN // uncomment this line to compile this file
-#include <stdio.h>
-#include "graph.c"
-
-int main()
-{
-    FILE *file = fopen("SAMPLE2_GRAPH.txt", "r");
-    Graph *graph = createGraphFromFile(file);
-    fclose(file);
-
-    // add more code
-
-    return 0;
-}
-#endif // MAIN
