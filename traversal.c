@@ -151,13 +151,11 @@ void dfsRecursive(FILE *fp, Graph *graph, int startIndex)
     {
         if (!graph->vertices[adjIndices[i]]->visited)
         {
+            /* As per specification, only BFS is required for drawing */
             // addVertex(tree, graph->vertices[adjIndices[i]]->key);
             // addEdge(tree, vertex->key, graph->vertices[adjIndices[i]]->key);
-            printf("Starting a recursion\n");
-            /* As per specification, only BFS is required for drawing */
             // dfsRecursive(fp, graph, adjIndices[i], tree);
             dfsRecursive(fp, graph, adjIndices[i]);
-            printf("Finished a recursion\n");
         }
     }
 
