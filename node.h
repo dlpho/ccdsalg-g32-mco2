@@ -1,7 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include "def.h"
+#include <stdbool.h>
 
 typedef struct nodeTag
 {

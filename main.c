@@ -1,3 +1,4 @@
+#include <string.h>
 #include "def.h"
 #include "node.c"
 #include "graph.c"
@@ -11,9 +12,9 @@ int main()
     FILE *file;
 
     // ask for graph file name
-    printf("Input filename: ");
-    scanf("%s", filename);
-    // strcpy(filename, "SAMPLE2_GRAPH.txt"); // FOR TESTING / Swap string with whatever file
+    // printf("Input filename: ");
+    // scanf("%s", filename);
+    strcpy(filename, "SAMPLE2_GRAPH.txt"); // FOR TESTING / Swap string with whatever file
 
     // exit if file does not exist
     file = fopen(filename, "r");
@@ -28,9 +29,9 @@ int main()
     fclose(file);
 
     // ask for starting vertex
-    printf("Input start vertex for the transversal: ");
-    scanf("%s", startKey);
-    // strcpy(startKey, "Noah"); // FOR TESTING / Swap string with whatever node
+    // printf("Input start vertex for the transversal: ");
+    // scanf("%s", startKey);
+    strcpy(startKey, "Noah"); // FOR TESTING / Swap string with whatever node
 
     // exit if vertex does not exist in graph
     if (vertexIndex(graph, startKey) == -1)
@@ -43,15 +44,22 @@ int main()
     // printEdges(graph);
 
     // proceed to print traversals to file
-    Graph *tree = createGraph(graph->numVertices);
-    traversalsToFile(graph, startKey, tree);
+    Graph *treeBfs = createGraph(graph->numVertices);
+    Graph *treeDfs = createGraph(graph->numVertices);
+    traversalsToFile(graph, startKey, treeBfs, treeDfs);
 
     // cut off last 4 characters of filename
     filename[strlen(filename) - 4] = '\0';
+    // Filename, _dfs/_bfs/_tree, .svg, null
+    StrDraw buffer;
 
     // draw graph and tree
-    drawGraph(graph, filename);
-    drawTree(tree, filename);
+    sprintf(buffer, "%s_graph.svg", filename);
+    drawGraph(graph, buffer);
+    sprintf(buffer, "%s_bfs.svg", filename);
+    drawTree(treeBfs, buffer);
+    sprintf(buffer, "%s_dfs.svg", filename);
+    drawTree(treeDfs, buffer);
 
     freeGraph(graph);
 

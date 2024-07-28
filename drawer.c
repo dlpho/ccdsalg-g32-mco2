@@ -5,6 +5,7 @@
 #include <math.h>
 #include "graph.h"
 #include "graph.c"
+#include "drawer.h"
 
 #define NODE_WIDTH 100
 #define NODE_HEIGHT 50
@@ -20,19 +21,9 @@
 
 #define PI 3.14159265359 // M_PI is not importing from math.h for some reason
 
-void drawTree(Graph *graph, Str100 textFileName);
-void drawGraph(Graph *graph, Str100 textFileName);
-void printNode(Node *node, int x, int y, FILE *fp);
-void printLine(int x1, int y1, int x2, int y2, FILE *fp);
-void depthFinder(Graph *graph, int *depthArray, int vertexIndex, int parentIndex);
-
-void drawGraph(Graph *graph, Str100 textFileName)
+void drawGraph(Graph *graph, StrDraw fileName)
 {
     // Generate statistics for calculations
-
-    // fileName + fileSuffix + extension + null terminator
-    char fileName[100 + 6 + 4 + 1];
-    sprintf(fileName, "%s_graph.svg", textFileName);
     FILE *fp = fopen(fileName, "w");
 
     if (fp == NULL)
@@ -84,7 +75,7 @@ void drawGraph(Graph *graph, Str100 textFileName)
  * ! IMPORTANT ASSUMPTION: First node in graph is the root node
  * ! IMPORTANT ASSUMPTION: Nodes added are in order. i.e. children of Node B is added first before children of Node C
  */
-void drawTree(Graph *graph, Str100 textFileName)
+void drawTree(Graph *graph, StrDraw fileName)
 {
     int depthOfNode[graph->numVertices];
     int childrenCount[graph->numVertices];
@@ -121,9 +112,6 @@ void drawTree(Graph *graph, Str100 textFileName)
         if (depthWidth[depthOfNode[i]] > widestDepth)
             widestDepth = depthWidth[depthOfNode[i]];
 
-    // fileName + fileSuffix + extension + null terminator
-    char fileName[100 + 5 + 4 + 1];
-    sprintf(fileName, "%s_tree.svg", textFileName);
     FILE *fp = fopen(fileName, "w");
 
     if (fp == NULL)

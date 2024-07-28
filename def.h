@@ -14,5 +14,7 @@
 
 typedef char Str20[21];
 typedef char Str100[101];
+// name, _dfs/_bfs/_graph, .svg, null terminator
+typedef char StrDraw[100 + 6 + 4 + 1];
 
 #endif

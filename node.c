@@ -2,6 +2,7 @@
 #define NODE_C
 
 #include "node.h"
+#include "def.h"
 
 Node *createNode(Str20 key)
 {
