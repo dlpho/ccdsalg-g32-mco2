@@ -4,7 +4,7 @@
 #include "traversal.c"
 #include "drawer.c"
 
-#define MAIN_C
+#define MAIN
 
 int main()
 {

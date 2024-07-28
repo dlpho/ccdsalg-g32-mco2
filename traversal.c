@@ -176,7 +176,8 @@ void sortAlphabetically(Graph *graph, int *adjIndices, int count)
 
 #endif // TRANVERSAL_C
 
-#ifndef MAIN_C
+#ifndef MAIN
+// #define MAIN // uncomment this line to compile this file
 #include <stdio.h>
 #include "graph.c"
 
@@ -190,4 +191,4 @@ int main()
 
     return 0;
 }
-#endif // MAIN_C
+#endif // MAIN
