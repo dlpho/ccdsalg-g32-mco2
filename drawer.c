@@ -118,8 +118,8 @@ void drawTree(Graph *graph, Str100 textFileName)
 
     int widestDepth = 0;
     for (int i = 0; i < graph->numVertices; i++)
-        if (depthOfNode[i] > widestDepth)
-            widestDepth = depthOfNode[i];
+        if (depthWidth[depthOfNode[i]] > widestDepth)
+            widestDepth = depthWidth[depthOfNode[i]];
 
     // fileName + fileSuffix + extension + null terminator
     char fileName[100 + 5 + 4 + 1];
@@ -138,7 +138,7 @@ void drawTree(Graph *graph, Str100 textFileName)
     // Write svg header
     fprintf(fp, "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n");
 
-    int totalWidth = depthWidth[widestDepth] * (NODE_WIDTH + NODE_X_MARGIN) - NODE_X_MARGIN;
+    int totalWidth = widestDepth * (NODE_WIDTH + NODE_X_MARGIN) - NODE_X_MARGIN;
     int centerX = totalWidth / 2;
     int nodePositions[graph->numVertices][2];
     for (int i = 0; i < graph->numVertices; i++)
