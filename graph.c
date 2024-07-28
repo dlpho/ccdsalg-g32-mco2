@@ -1,3 +1,6 @@
+#ifndef GRAPH_C
+#define GRAPH_C
+
 #include "node.h"
 #include "graph.h"
 
@@ -222,7 +225,7 @@ void addEdge(Graph *graph, Str20 fromKey, Str20 toKey)
         // set edge value in adjacency matrix to true
         // ensure that it is SYMMETRIC
         graph->edges[fromIndex][toIndex] = true;
-//        graph->edges[toIndex][fromIndex] = true;
+        //        graph->edges[toIndex][fromIndex] = true;
     }
 }
 
@@ -281,3 +284,5 @@ void strLower(const Str20 string, Str20 lower)
     }
     lower[i] = '\0'; // ensure the null at end
 }
+
+#endif // GRAPH_C

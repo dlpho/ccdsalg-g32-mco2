@@ -3,7 +3,6 @@
 
 #include "def.h"
 
-
 typedef struct nodeTag
 {
     Str20 key;
@@ -15,4 +14,4 @@ typedef struct nodeTag
 Node *createNode(Str20 key);
 void freeNode(Node *node);
 
-#endif
+#endif // NODE_H

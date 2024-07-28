@@ -4,10 +4,11 @@
 #include "def.h"
 #include "graph.h"
 
-void traversalsToFile(Graph* graph, Str20 startKey);
-void bfs(FILE *fp, Graph *graph, Str20 startKey);
-void bfsRecursive(FILE *fp, Graph *graph, int startIndex);
+Graph *traversalsToFile(Graph *graph, Str20 startKey);
+void bfs(FILE *fp, Graph *graph, Str20 startKey, Graph *tree); // as per specification, BFS is only required for drawing
+void bfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree);
 void dfs(FILE *fp, Graph *graph, Str20 startKey);
 void dfsRecursive(FILE *fp, Graph *graph, int startIndex);
 void sortAlphabetically(Graph *graph, int *adjIndices, int count);
-#endif
+
+#endif // TRAVERSAL_H

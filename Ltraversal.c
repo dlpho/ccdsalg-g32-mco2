@@ -1,3 +1,6 @@
+#ifndef LTRAVERSAL_C
+#define LTRAVERSAL_C
+
 #include <stdbool.h>
 #include <stdlib.h>
 
@@ -11,7 +14,8 @@ void dfsRecursive(Graph *graph, Node *node);
 int vertexIndex(Graph *graph, Str20 key);
 void resetVisited(Graph *graph);
 
-void bfs(Graph *graph, Str20 startKey) {
+void bfs(Graph *graph, Str20 startKey)
+{
     int startIndex = vertexIndex(graph, startKey);
     struct Queue *q = createQueue(graph->numVertices + 1);
     if (startIndex == -1)
@@ -29,7 +33,7 @@ void bfs(Graph *graph, Str20 startKey) {
     freeQueue(q);
 }
 
-void bfsRecursive(Graph *graph, Str20 key, struct Queue* q)
+void bfsRecursive(Graph *graph, Str20 key, struct Queue *q)
 {
     int index = vertexIndex(graph, key);
 
@@ -40,7 +44,6 @@ void bfsRecursive(Graph *graph, Str20 key, struct Queue* q)
         enQueue(q, graph->vertices[index]->key);
         graph->vertices[index]->visited = true;
     }
-
 
     // Create an array of adjacent node indices for sorting
     int *adjIndices = (int *)malloc(graph->numVertices * sizeof(int));
@@ -70,7 +73,7 @@ void bfsRecursive(Graph *graph, Str20 key, struct Queue* q)
     }
 
     // Loop through the adjacent indices and enqueue the ones that aren't explored yet
-    for (int i = 0; i < count - 1; i++) 
+    for (int i = 0; i < count - 1; i++)
     {
         if (!(graph->vertices[adjIndices[i]]->visited))
         {
@@ -164,3 +167,5 @@ void resetVisited(Graph *graph)
         graph->vertices[i]->visited = false;
     }
 }
+
+#endif // LTRAVERSAL_C

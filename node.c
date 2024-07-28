@@ -1,3 +1,6 @@
+#ifndef NODE_C
+#define NODE_C
+
 #include "node.h"
 
 Node *createNode(Str20 key)
@@ -26,3 +29,5 @@ void freeNode(Node *node)
         free(node);
     }
 }
+
+#endif // NODE_C

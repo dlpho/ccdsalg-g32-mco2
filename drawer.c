@@ -1,3 +1,6 @@
+#ifndef DRAWER_C
+#define DRAWER_C
+
 #include <stdio.h>
 #include <math.h>
 #include "graph.h"
@@ -17,22 +20,19 @@
 
 #define PI 3.14159265359 // M_PI is not importing from math.h for some reason
 
-void drawTree(Graph *graph);
-void drawGraph(Graph *graph);
+void drawTree(Graph *graph, Str100 textFileName);
+void drawGraph(Graph *graph, Str100 textFileName);
 void printNode(Node *node, int x, int y, FILE *fp);
 void printLine(int x1, int y1, int x2, int y2, FILE *fp);
 void depthFinder(Graph *graph, int *depthArray, int vertexIndex, int parentIndex);
 
-void drawGraph(Graph *graph)
+void drawGraph(Graph *graph, Str100 textFileName)
 {
     // Generate statistics for calculations
 
-    char fileName[20 + 4 + 1]; // 20 char. for file name, 4 char. for ".svg", 1 char. for null terminator
-    printf("File name for svg file (20 char. max).\n Warning: If file exists, it will be overwritten.\n");
-    printf(">>> ");
-    scanf("%s", fileName);
-
-    strcat(fileName, ".svg");
+    // fileName + fileSuffix + extension + null terminator
+    char fileName[100 + 6 + 4 + 1];
+    sprintf(fileName, "%s_graph.svg", textFileName);
     FILE *fp = fopen(fileName, "w");
 
     if (fp == NULL)
@@ -41,7 +41,8 @@ void drawGraph(Graph *graph)
         return;
     }
 
-    printf("Drawing graph...\n");
+    /* Disabled output as precaution to any strict I/O */
+    // printf("Drawing graph...\n");
 
     // Write svg header
     fprintf(fp, "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n");
@@ -75,14 +76,15 @@ void drawGraph(Graph *graph)
     // Write svg footer
     fprintf(fp, "</svg>");
     fclose(fp);
-    printf("Graph drawn to %s\n", fileName);
+    /* Disabled output as precaution to any strict I/O */
+    // printf("Graph drawn to %s\n", fileName);
 }
 
 /**
  * ! IMPORTANT ASSUMPTION: First node in graph is the root node
  * ! IMPORTANT ASSUMPTION: Nodes added are in order. i.e. children of Node B is added first before children of Node C
  */
-void drawTree(Graph *graph)
+void drawTree(Graph *graph, Str100 textFileName)
 {
     int depthOfNode[graph->numVertices];
     int childrenCount[graph->numVertices];
@@ -119,12 +121,9 @@ void drawTree(Graph *graph)
         if (depthOfNode[i] > widestDepth)
             widestDepth = depthOfNode[i];
 
-    char fileName[20 + 4 + 1]; // 20 char. for file name, 4 char. for ".svg", 1 char. for null terminator
-    printf("File name for svg file (20 char. max).\n Warning: If file exists, it will be overwritten.\n");
-    printf(">>> ");
-    scanf("%s", fileName);
-
-    strcat(fileName, ".svg");
+    // fileName + fileSuffix + extension + null terminator
+    char fileName[100 + 5 + 4 + 1];
+    sprintf(fileName, "%s_tree.svg", textFileName);
     FILE *fp = fopen(fileName, "w");
 
     if (fp == NULL)
@@ -133,7 +132,8 @@ void drawTree(Graph *graph)
         return;
     }
 
-    printf("Drawing tree...\n");
+    /* Disabled output as precaution to any strict I/O */
+    // printf("Drawing tree...\n");
 
     // Write svg header
     fprintf(fp, "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n");
@@ -181,7 +181,8 @@ void drawTree(Graph *graph)
     // Write svg footer
     fprintf(fp, "</svg>");
     fclose(fp);
-    printf("Tree drawn to %s\n", fileName);
+    /* Disabled output as precaution to any strict I/O */
+    // printf("Tree drawn to %s\n", fileName);
 }
 
 void depthFinder(Graph *graph, int *depthArray, int vertexIndex, int parentIndex)
@@ -213,42 +214,4 @@ void printLine(int x1, int y1, int x2, int y2, FILE *fp)
     fprintf(fp, "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" stroke=\"black\" />\n", x1, y1, x2, y2);
 }
 
-int main()
-{
-    Graph *graph = createGraph(8);
-    Str20 keys[] = {"A", "B", "C", "D", "E", "F", "G", "H"};
-    addVertex(graph, keys[0]);
-    addVertex(graph, keys[1]);
-    addVertex(graph, keys[2]);
-    addVertex(graph, keys[4]);
-    addVertex(graph, keys[5]);
-    addVertex(graph, keys[3]);
-    addVertex(graph, keys[6]);
-    addVertex(graph, keys[7]);
-
-    addEdge(graph, keys[0], keys[1]);
-    addEdge(graph, keys[0], keys[2]);
-    addEdge(graph, keys[1], keys[4]);
-    addEdge(graph, keys[1], keys[5]);
-    addEdge(graph, keys[2], keys[3]);
-    addEdge(graph, keys[2], keys[6]);
-    addEdge(graph, keys[2], keys[7]);
-
-    drawTree(graph);
-
-    Graph *graph2 = createGraph(4);
-    Str20 keys2[] = {"A", "B", "C", "D"};
-    addVertex(graph2, keys2[0]);
-    addVertex(graph2, keys2[1]);
-    addVertex(graph2, keys2[2]);
-    addVertex(graph2, keys2[3]);
-
-    addEdge(graph2, keys2[0], keys2[1]);
-    addEdge(graph2, keys2[0], keys2[2]);
-    addEdge(graph2, keys2[1], keys2[3]);
-    addEdge(graph2, keys2[2], keys2[3]);
-
-    drawGraph(graph2);
-
-    return 0;
-}
+#endif

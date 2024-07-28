@@ -1,9 +1,13 @@
 #include "traversal.h"
 
-void traversalsToFile(Graph *graph, Str20 startKey)
+#ifndef TRANVERSAL_C
+#define TRANVERSAL_C
+
+Graph *traversalsToFile(Graph *graph, Str20 startKey)
 {
     FILE *fp;
     int i;
+    Graph *tree = createGraph(graph->numVertices);
 
     // open file for write
     fp = fopen("TRAVERSALS.txt", "w");
@@ -17,26 +21,28 @@ void traversalsToFile(Graph *graph, Str20 startKey)
     fprintf(fp, "\n");
 
     // print traversals from start key
-    bfs(fp, graph, startKey);
+    bfs(fp, graph, startKey, graph);
     fprintf(fp, "\n");
     dfs(fp, graph, startKey);
     fprintf(fp, "\n");
 
     // close file
     fclose(fp);
+    return tree; // send tree for further processing
 }
 
-void bfs(FILE *fp, Graph *graph, Str20 startKey)
+// as per specification, BFS is only required for drawing
+void bfs(FILE *fp, Graph *graph, Str20 startKey, Graph *tree)
 {
     // reset visited flags for verticed in graph
     resetVisited(graph);
 
     // start BFS from given start key
-    bfsRecursive(fp, graph, vertexIndex(graph, startKey));
+    bfsRecursive(fp, graph, vertexIndex(graph, startKey), tree);
     fprintf(fp, "\n");
 }
 
-void bfsRecursive(FILE *fp, Graph *graph, int startIndex)
+void bfsRecursive(FILE *fp, Graph *graph, int startIndex, Graph *tree)
 {
     bool allVisited;
     int i, j, count, temp;
@@ -45,6 +51,7 @@ void bfsRecursive(FILE *fp, Graph *graph, int startIndex)
     // print and mark the start vertex as visited if not already visited
     if (!graph->vertices[startIndex]->visited)
     {
+        addVertex(tree, graph->vertices[startIndex]->key);
         fprintf(fp, "%s ", graph->vertices[startIndex]->key);
         graph->vertices[startIndex]->visited = true;
     }
@@ -85,6 +92,8 @@ void bfsRecursive(FILE *fp, Graph *graph, int startIndex)
     {
         if (!graph->vertices[adjIndices[i]]->visited)
         {
+            addVertex(tree, graph->vertices[adjIndices[i]]->key);
+            addEdge(tree, graph->vertices[startIndex]->key, graph->vertices[adjIndices[i]]->key);
             fprintf(fp, "%s ", graph->vertices[adjIndices[i]]->key);
             graph->vertices[adjIndices[i]]->visited = true;
         }
@@ -93,7 +102,7 @@ void bfsRecursive(FILE *fp, Graph *graph, int startIndex)
     // then recursively visit each unvisited adjacent node
     for (i = 0; i < count; i++)
     {
-        bfsRecursive(fp, graph, adjIndices[i]);
+        bfsRecursive(fp, graph, adjIndices[i], tree);
     }
 
     // free the array of adjacent indices
@@ -166,3 +175,5 @@ void sortAlphabetically(Graph *graph, int *adjIndices, int count)
         }
     }
 }
+
+#endif // TRANVERSAL_C
