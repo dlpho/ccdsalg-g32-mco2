@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<line x1="350" y1="25" x2="50" y2="125" stroke="black" />
+<line x1="350" y1="25" x2="200" y2="125" stroke="black" />
+<line x1="350" y1="25" x2="350" y2="125" stroke="black" />
+<line x1="350" y1="25" x2="500" y2="125" stroke="black" />
+<line x1="350" y1="25" x2="650" y2="125" stroke="black" />
+<line x1="200" y1="125" x2="125" y2="225" stroke="black" />
+<line x1="200" y1="125" x2="275" y2="225" stroke="black" />
+<line x1="350" y1="125" x2="425" y2="225" stroke="black" />
+<line x1="650" y1="125" x2="575" y2="225" stroke="black" />
+<line x1="575" y1="225" x2="350" y2="325" stroke="black" />
+<rect x="300" y="0" width="100" height="50" fill="white" stroke="black" />
+<text x="310" y="25" font-size="12" fill="black">Noah</text>
+<rect x="0" y="100" width="100" height="50" fill="white" stroke="black" />
+<text x="10" y="125" font-size="12" fill="black">Joakim</text>
+<rect x="150" y="100" width="100" height="50" fill="white" stroke="black" />
+<text x="160" y="125" font-size="12" fill="black">Leo</text>
+<rect x="300" y="100" width="100" height="50" fill="white" stroke="black" />
+<text x="310" y="125" font-size="12" fill="black">Nick</text>
+<rect x="450" y="100" width="100" height="50" fill="white" stroke="black" />
+<text x="460" y="125" font-size="12" fill="black">Plante</text>
+<rect x="600" y="100" width="100" height="50" fill="white" stroke="black" />
+<text x="610" y="125" font-size="12" fill="black">Vic</text>
+<rect x="75" y="200" width="100" height="50" fill="white" stroke="black" />
+<text x="85" y="225" font-size="12" fill="black">Andy</text>
+<rect x="225" y="200" width="100" height="50" fill="white" stroke="black" />
+<text x="235" y="225" font-size="12" fill="black">Folio</text>
+<rect x="375" y="200" width="100" height="50" fill="white" stroke="black" />
+<text x="385" y="225" font-size="12" fill="black">Jesse</text>
+<rect x="525" y="200" width="100" height="50" fill="white" stroke="black" />
+<text x="535" y="225" font-size="12" fill="black">Chris</text>
+<rect x="300" y="300" width="100" height="50" fill="white" stroke="black" />
+<text x="310" y="325" font-size="12" fill="black">Emz</text>
+</svg>

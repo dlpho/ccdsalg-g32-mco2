@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<line x1="850" y1="425" x2="699" y2="737" stroke="black" />
+<line x1="850" y1="425" x2="360" y2="814" stroke="black" />
+<line x1="850" y1="425" x2="89" y2="251" stroke="black" />
+<line x1="850" y1="425" x2="360" y2="35" stroke="black" />
+<line x1="699" y1="737" x2="850" y2="425" stroke="black" />
+<line x1="699" y1="737" x2="360" y2="814" stroke="black" />
+<line x1="699" y1="737" x2="89" y2="251" stroke="black" />
+<line x1="360" y1="814" x2="850" y2="425" stroke="black" />
+<line x1="360" y1="814" x2="699" y2="737" stroke="black" />
+<line x1="360" y1="814" x2="89" y2="598" stroke="black" />
+<line x1="89" y1="598" x2="360" y2="814" stroke="black" />
+<line x1="89" y1="598" x2="360" y2="35" stroke="black" />
+<line x1="89" y1="251" x2="850" y2="425" stroke="black" />
+<line x1="89" y1="251" x2="699" y2="737" stroke="black" />
+<line x1="89" y1="251" x2="360" y2="35" stroke="black" />
+<line x1="360" y1="35" x2="850" y2="425" stroke="black" />
+<line x1="360" y1="35" x2="89" y2="598" stroke="black" />
+<line x1="360" y1="35" x2="89" y2="251" stroke="black" />
+<line x1="360" y1="35" x2="699" y2="112" stroke="black" />
+<line x1="699" y1="112" x2="360" y2="35" stroke="black" />
+<rect x="800" y="400" width="100" height="50" fill="white" stroke="black" />
+<text x="810" y="425" font-size="12" fill="black">Fiona</text>
+<rect x="649" y="712" width="100" height="50" fill="white" stroke="black" />
+<text x="659" y="737" font-size="12" fill="black">Phillip</text>
+<rect x="310" y="789" width="100" height="50" fill="white" stroke="black" />
+<text x="320" y="814" font-size="12" fill="black">Ian</text>
+<rect x="39" y="573" width="100" height="50" fill="white" stroke="black" />
+<text x="49" y="598" font-size="12" fill="black">Debbie</text>
+<rect x="39" y="226" width="100" height="50" fill="white" stroke="black" />
+<text x="49" y="251" font-size="12" fill="black">Carl</text>
+<rect x="310" y="10" width="100" height="50" fill="white" stroke="black" />
+<text x="320" y="35" font-size="12" fill="black">Liam</text>
+<rect x="649" y="87" width="100" height="50" fill="white" stroke="black" />
+<text x="659" y="112" font-size="12" fill="black">Frank</text>
+</svg>

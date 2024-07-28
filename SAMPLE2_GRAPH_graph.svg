@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<line x1="850" y1="425" x2="786" y2="641" stroke="black" />
+<line x1="850" y1="425" x2="616" y2="788" stroke="black" />
+<line x1="850" y1="425" x2="188" y2="727" stroke="black" />
+<line x1="850" y1="425" x2="66" y2="537" stroke="black" />
+<line x1="850" y1="425" x2="616" y2="61" stroke="black" />
+<line x1="786" y1="641" x2="850" y2="425" stroke="black" />
+<line x1="786" y1="641" x2="393" y2="820" stroke="black" />
+<line x1="786" y1="641" x2="188" y2="122" stroke="black" />
+<line x1="786" y1="641" x2="616" y2="61" stroke="black" />
+<line x1="616" y1="788" x2="850" y2="425" stroke="black" />
+<line x1="393" y1="820" x2="786" y2="641" stroke="black" />
+<line x1="393" y1="820" x2="188" y2="727" stroke="black" />
+<line x1="393" y1="820" x2="188" y2="122" stroke="black" />
+<line x1="393" y1="820" x2="616" y2="61" stroke="black" />
+<line x1="188" y1="727" x2="850" y2="425" stroke="black" />
+<line x1="188" y1="727" x2="393" y2="820" stroke="black" />
+<line x1="66" y1="537" x2="850" y2="425" stroke="black" />
+<line x1="66" y1="537" x2="188" y2="122" stroke="black" />
+<line x1="66" y1="537" x2="786" y2="208" stroke="black" />
+<line x1="66" y1="312" x2="786" y2="208" stroke="black" />
+<line x1="188" y1="122" x2="786" y2="641" stroke="black" />
+<line x1="188" y1="122" x2="393" y2="820" stroke="black" />
+<line x1="188" y1="122" x2="66" y2="537" stroke="black" />
+<line x1="188" y1="122" x2="786" y2="208" stroke="black" />
+<line x1="393" y1="29" x2="616" y2="61" stroke="black" />
+<line x1="616" y1="61" x2="850" y2="425" stroke="black" />
+<line x1="616" y1="61" x2="786" y2="641" stroke="black" />
+<line x1="616" y1="61" x2="393" y2="820" stroke="black" />
+<line x1="616" y1="61" x2="393" y2="29" stroke="black" />
+<line x1="786" y1="208" x2="66" y2="537" stroke="black" />
+<line x1="786" y1="208" x2="66" y2="312" stroke="black" />
+<line x1="786" y1="208" x2="188" y2="122" stroke="black" />
+<rect x="800" y="400" width="100" height="50" fill="white" stroke="black" />
+<text x="810" y="425" font-size="12" fill="black">Noah</text>
+<rect x="736" y="616" width="100" height="50" fill="white" stroke="black" />
+<text x="746" y="641" font-size="12" fill="black">Nick</text>
+<rect x="566" y="763" width="100" height="50" fill="white" stroke="black" />
+<text x="576" y="788" font-size="12" fill="black">Joakim</text>
+<rect x="343" y="795" width="100" height="50" fill="white" stroke="black" />
+<text x="353" y="820" font-size="12" fill="black">Folio</text>
+<rect x="138" y="702" width="100" height="50" fill="white" stroke="black" />
+<text x="148" y="727" font-size="12" fill="black">Plante</text>
+<rect x="16" y="512" width="100" height="50" fill="white" stroke="black" />
+<text x="26" y="537" font-size="12" fill="black">Vic</text>
+<rect x="16" y="287" width="100" height="50" fill="white" stroke="black" />
+<text x="26" y="312" font-size="12" fill="black">Emz</text>
+<rect x="138" y="97" width="100" height="50" fill="white" stroke="black" />
+<text x="148" y="122" font-size="12" fill="black">Jesse</text>
+<rect x="343" y="4" width="100" height="50" fill="white" stroke="black" />
+<text x="353" y="29" font-size="12" fill="black">Andy</text>
+<rect x="566" y="36" width="100" height="50" fill="white" stroke="black" />
+<text x="576" y="61" font-size="12" fill="black">Leo</text>
+<rect x="736" y="183" width="100" height="50" fill="white" stroke="black" />
+<text x="746" y="208" font-size="12" fill="black">Chris</text>
+</svg>

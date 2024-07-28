@@ -1,0 +1,15 @@
+Noah	5
+Nick	4
+Joakim	1
+Folio	4
+Plante	2
+Vic	3
+Emz	1
+Jesse	4
+Andy	1
+Leo	4
+Chris	3
+
+Noah Joakim Leo Nick Plante Vic Andy Folio Jesse Chris Emz 
+Noah Joakim Leo Andy Folio Jesse Chris Emz Vic Nick Plante 
+
